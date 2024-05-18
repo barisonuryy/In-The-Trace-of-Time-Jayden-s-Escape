@@ -26,13 +26,13 @@ public class CMov : MonoBehaviour
 
     Quaternion targetRotation;
 
-    CameraController cameraController;
+    [SerializeField] CameraController cameraController;
     Animator animator;
     CharacterController characterController;
 
     private void Awake()
     {
-        cameraController = Camera.main.GetComponent<CameraController>();
+        
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
     }
@@ -102,9 +102,6 @@ public class CMov : MonoBehaviour
             isJump = false;
         }
 
-        if (moveAmount > 0.2)
-        {
-            animator.SetFloat("moveAmount", 0, 0.2f, Time.deltaTime);
-        }
+     
     }
 }
