@@ -23,6 +23,13 @@ public class CMov : MonoBehaviour
     bool isGrounded;
     private float moveAmount;
     float ySpeed;
+    public float dashSpeed = 20f;
+    public float dashTime = 0.2f;
+    [SerializeField] private Camera cam;
+    private float currentDashTime;
+    private bool isDashing;
+    private Vector2 moveInput;
+    private Vector3 moveDirection;
 
     Quaternion targetRotation;
 
@@ -38,6 +45,7 @@ public class CMov : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext value)
     {
+        if(!isDashing&&isGrounded)
         moveInputN = value.ReadValue<Vector2>();
 
     }
@@ -50,9 +58,39 @@ public class CMov : MonoBehaviour
             isJump = true;
         }
     }
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed && !isDashing)
+        {
+            isDashing = true;
+            currentDashTime = dashTime;
+        }
+    }
+    public void HandleDash()
+    {
+        if (isDashing)
+        {
+            if (currentDashTime > 0)
+            {
+                Debug.Log("Dash Başarılı");
+                Vector3 dashDirection = moveDirection != Vector3.zero ? moveDirection : transform.forward;
+                characterController.Move(dashDirection * dashSpeed*Time.deltaTime);
+                isMove = false;
+                currentDashTime -= Time.deltaTime;
+            }
+            else
+            {
+               
+               
+                isDashing = false;
+            } 
+        }
+         
+        
+    }
     private void Update()
     {
- 
+     HandleDash();
       moveAmount = Mathf.Clamp01(Mathf.Abs(moveInputN.x) + Mathf.Abs(moveInputN.y));
 
 
@@ -102,6 +140,6 @@ public class CMov : MonoBehaviour
             isJump = false;
         }
 
-     
+     }
     }
-}
+

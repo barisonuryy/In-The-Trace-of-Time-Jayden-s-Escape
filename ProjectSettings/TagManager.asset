@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - door
+  - button f1
+  - button f5
+  - button f6
+  - button f2
+  - button f3
+  - button f4
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -11,8 +19,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 
