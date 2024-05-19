@@ -25,7 +25,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _DETAIL_MULX2
+  - _DETAIL_SCALED
   - _EMISSION
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
@@ -120,8 +120,8 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 1
-    - _DetailNormalMapScale: 1
+    - _DetailAlbedoMapScale: 0
+    - _DetailNormalMapScale: 2
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -132,10 +132,10 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Opacity: 1
-    - _Parallax: 0.05
+    - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
