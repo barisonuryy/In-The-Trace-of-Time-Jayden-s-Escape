@@ -6,10 +6,11 @@ public class CameraController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Transform followTarget;
-    [SerializeField] float rotationSpeed = 2f;
-    [SerializeField] float distance = 5;
+    public float rotationSpeed = 2f;
+    public float distance = 5;
     [SerializeField] float minVerticalAngle = -45;
     [SerializeField] float maxVerticalAngle = 45;
+    [SerializeField] float maxVerticalAngleX,minVerticalAngleX;
     [SerializeField] Vector2 framingOffset;
     [SerializeField] bool invertX;
     [SerializeField] bool invertY;
@@ -36,6 +37,7 @@ public class CameraController : MonoBehaviour
         rotationX += Input.GetAxis("Mouse Y") * invertYVal * rotationSpeed;
         rotationX = Mathf.Clamp(rotationX, minVerticalAngle, maxVerticalAngle);
         rotationY += Input.GetAxis("Mouse X") * invertXVal * rotationSpeed;
+       // rotationY = Mathf.Clamp(gameObject.transform.rotation.eulerAngles.z, minVerticalAngleX, maxVerticalAngleX);
 
         var targetRotation = Quaternion.Euler(rotationX, rotationY, 0);
 

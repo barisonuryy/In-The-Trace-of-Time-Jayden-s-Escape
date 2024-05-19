@@ -7,10 +7,11 @@ using UnityEngine.InputSystem;
 public class CMov : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     [SerializeField] float rotationSpeed = 500f;
     public float jumpHeight = 2f;
     public float gravity = -9.81f;
+    [SerializeField] private float runSpeed,crouchSpeed,height,wide;
     [Header("Ground Check Settings")]
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] Vector3 groundCheckOffset;
@@ -30,23 +31,34 @@ public class CMov : MonoBehaviour
     private bool isDashing;
     private Vector2 moveInput;
     private Vector3 moveDirection;
-
+    private bool isRunning;
+    private float tempRunSpeed,tempCrouchSpeed,tempHeight,tempWide;
     Quaternion targetRotation;
-
+    [SerializeField] private float runCoolDown,regenateTime;
     [SerializeField] CameraController cameraController;
     Animator animator;
+    private bool isCrouched;
     CharacterController characterController;
 
     private void Awake()
     {
-        
+        tempRunSpeed = runSpeed;
+        tempCrouchSpeed = crouchSpeed;
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        tempWide = characterController.radius;
+        tempHeight = characterController.height;
+        runSpeed = 1f;
+        crouchSpeed = 1f;
     }
     public void OnMove(InputAction.CallbackContext value)
     {
         if(!isDashing&&isGrounded)
         moveInputN = value.ReadValue<Vector2>();
+        if (isDashing)
+        {
+            moveInputN=Vector2.zero;
+        }
 
     }
 
@@ -56,6 +68,25 @@ public class CMov : MonoBehaviour
         {
             velocityJump.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             isJump = true;
+        }
+    }
+
+    public void OnCrouch(InputAction.CallbackContext val)
+    {
+        if (val.performed)
+        {
+            characterController.height = height;
+            characterController.radius = wide;
+            isCrouched = true;
+            crouchSpeed = tempCrouchSpeed;
+        }
+
+        if(val.action.WasReleasedThisFrame())
+        {
+            characterController.height = tempHeight;
+            characterController.radius = tempWide;
+            isCrouched = false;
+            crouchSpeed = 1f;
         }
     }
     public void OnDash(InputAction.CallbackContext context)
@@ -92,7 +123,23 @@ public class CMov : MonoBehaviour
     {
      HandleDash();
       moveAmount = Mathf.Clamp01(Mathf.Abs(moveInputN.x) + Mathf.Abs(moveInputN.y));
+      if (isRunning && regenateTime>0)
+      {
+          
+          runSpeed -= Time.deltaTime / 2;
+          regenateTime -= Time.deltaTime/2;
 
+      }
+      else
+      {
+          isRunning = false;
+          regenateTime += Time.deltaTime/4;
+          runSpeed = 1f;
+      }
+
+  
+       
+      
 
         var moveInput = (new Vector3(moveInputN.x, 0, moveInputN.y)).normalized;
         var moveDir = cameraController.PlanarRotation * moveInput;
@@ -105,7 +152,7 @@ public class CMov : MonoBehaviour
            
         }
         velocityJump.y += gravity * Time.deltaTime;
-        var velocity = moveDir * moveSpeed;
+        var velocity = moveDir * moveSpeed*runSpeed*crouchSpeed;
         velocity.y = velocityJump.y;
         characterController.Move(velocity * Time.deltaTime);
 
@@ -135,11 +182,28 @@ public class CMov : MonoBehaviour
     {
         animator.SetBool("canJump",isJump);
         animator.SetBool("isGround",isGrounded);
+        animator.SetBool("isRunning",isRunning);
+        animator.SetBool("canCrouch",isCrouched);
         if (isJump)
         {
             isJump = false;
         }
 
      }
+
+    public void OnRunning(InputAction.CallbackContext val)
+    {
+        if (val.performed)
+        {
+            isRunning=true;
+            runSpeed = tempRunSpeed;
+        }
+
+        if (val.action.WasReleasedThisFrame())
+        {
+            isRunning = false;
+        }  
+    }
+    
     }
 
