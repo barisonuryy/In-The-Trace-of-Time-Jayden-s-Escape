@@ -17,7 +17,7 @@ Jayden, portal aracılığıyla bir uzay istasyonuna ulaşır. Gelecekte, insanl
 # Emeği Geçenler
 - Hasan Demirtaş->Level Designı yaptı ve animasyon yaptı.
 - Selin Yiğit->Yapay zeka kısmını geliştirdi.
-- Selene Daroğlu->Oyunun poster kısmını ve tanıtım videosunu yaptı.
+- Selene Nisan Serdaroğlu->Oyunun poster kısmını ve tanıtım videosunu yaptı.
 - Barış Onur Yıldız->Karakterin mekaniklerini yaptı.
   
 # Oyun Tanıtım Videosu
