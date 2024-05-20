@@ -22,3 +22,38 @@ Jayden, portal aracılığıyla bir uzay istasyonuna ulaşır. Gelecekte, insanl
   
 # Oyun Tanıtım Videosu
 https://youtu.be/WzzSCe9rb28
+
+#Kaynakça
+MIXAMO CHARACTERS: https://www.mixamo.com/ 
+•	Knight D Pelegrini
+•	Erika Archer
+•	Paladin WProp J Nordstrom
+•	Peasant Girl 
+•	Morak
+•	Ch33_nonPBR
+
+              UNITY CHARACTERS: https://assetstore.unity.com/
+•	Sci Fi Space Soldier PolygonR
+•	Robot Hero : PBR HP Polyart
+
+              DRAGON MODEL:
+•	Dragon for Boss Monster : HP
+
+ENVIRONMENTAL MODELS (Unity)
+•	Autumn Mountain
+•	DETAILED - Medieval Wells & Props
+•	Gold Coins
+•	Medieval barrels and boxes
+•	Medieval_Castle
+•	Medieval Castle - Modular
+•	Medieval Gold
+•	POLYGON office building
+•	Rock and Boulders 2
+•	Rocks and Vegetation Pack URP
+•	Russian buildings lowpoly pack
+•	Sci-Fi Construction Kit (Modular)
+•	Stylized Crystal
+•	URP Tree Models
+•	Skybox Series Free
+
+
