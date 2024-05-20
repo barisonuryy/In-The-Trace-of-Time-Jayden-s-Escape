@@ -124,10 +124,10 @@ public class AttackSystem : MonoBehaviour
     void AttackRaycast()
     {
         Vector3 direction = sword.TransformDirection(Vector3.up);
-        if(Physics.Raycast(sword.position-direction, direction*2, out RaycastHit hit, attackDistance, attackLayer))
+        if(Physics.Raycast(sword.position+direction, direction, out RaycastHit hit, attackDistance, attackLayer))
         { 
            // HitTarget(hit.point);
-
+               Debug.Log("Attack Başarılı");
             if(hit.transform.TryGetComponent<Actor>(out Actor T))
             { T.TakeDamage(attackDamage); }
         } 
@@ -148,6 +148,6 @@ public class AttackSystem : MonoBehaviour
         Gizmos.color=Color.magenta;
         Vector3 direction = sword.TransformDirection(Vector3.up);
         
-        Gizmos.DrawRay(sword.position-direction, direction*2);
+        Gizmos.DrawRay(sword.position+direction, direction);
     }
 }

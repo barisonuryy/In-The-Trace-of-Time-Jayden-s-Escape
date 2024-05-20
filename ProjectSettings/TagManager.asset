@@ -12,6 +12,9 @@ TagManager:
   - button f3
   - button f4
   - Enemy
+  - CinemachineTarget
+  - Sword
+  - Portal
   layers:
   - Default
   - TransparentFX

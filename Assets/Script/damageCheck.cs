@@ -22,12 +22,15 @@ public class damageCheck : MonoBehaviour
     }
     
 
-    private void OnTriggerEnter(Collider other)
+  
+
+    private void OnCollisionStay(Collision other)
     {
         if (isAttacked && other.gameObject.CompareTag("Enemy"))
         {
             
             _actor.TakeDamage(attackDamage);
+            isAttacked = true;
         }
     }
 

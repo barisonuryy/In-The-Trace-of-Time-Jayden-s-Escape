@@ -38,10 +38,20 @@ public class CMov : MonoBehaviour
     [SerializeField] CameraController cameraController;
     Animator animator;
     private bool isCrouched;
+    private bool isFutureC;
+    private float weapSpeed;
     CharacterController characterController;
 
     private void Awake()
     {
+        if (gameObject.name == "SpaceSoldier")
+        {
+            isFutureC = true;
+        }
+        else
+        {
+            isFutureC = false;
+        }
         tempRunSpeed = runSpeed;
         tempCrouchSpeed = crouchSpeed;
         animator = GetComponent<Animator>();
@@ -55,10 +65,11 @@ public class CMov : MonoBehaviour
     {
         if(!isDashing&&isGrounded)
         moveInputN = value.ReadValue<Vector2>();
-        if (isDashing)
+        if (isDashing||value.action.WasReleasedThisFrame())
         {
             moveInputN=Vector2.zero;
         }
+        
 
     }
 
@@ -69,6 +80,12 @@ public class CMov : MonoBehaviour
             velocityJump.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             isJump = true;
         }
+
+        if (value.action.WasReleasedThisFrame())
+        {
+            isJump = false;
+        }
+        
     }
 
     public void OnCrouch(InputAction.CallbackContext val)
@@ -153,8 +170,18 @@ public class CMov : MonoBehaviour
         }
         velocityJump.y += gravity * Time.deltaTime;
         var velocity = moveDir * moveSpeed*runSpeed*crouchSpeed;
+        if (isFutureC)
+        {
+            weapSpeed= velocity.normalized.z*2;
+            weapSpeed = Mathf.Abs(weapSpeed);
+           Debug.Log("Mevcut hız"+weapSpeed);
+            animator.SetFloat("rifSpeed",weapSpeed);
+        }
+        
         velocity.y = velocityJump.y;
         characterController.Move(velocity * Time.deltaTime);
+        
+        
 
         if (moveAmount > 0)
         {
@@ -184,10 +211,7 @@ public class CMov : MonoBehaviour
         animator.SetBool("isGround",isGrounded);
         animator.SetBool("isRunning",isRunning);
         animator.SetBool("canCrouch",isCrouched);
-        if (isJump)
-        {
-            isJump = false;
-        }
+     
 
      }
 

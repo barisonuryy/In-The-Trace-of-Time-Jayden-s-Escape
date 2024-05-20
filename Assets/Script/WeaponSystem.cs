@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.NCalc;
@@ -11,7 +12,6 @@ public class WeaponSystem : MonoBehaviour
     [SerializeField] private GameObject weapon;
     private bool isShoot;
     private bool isAim;
-    [SerializeField] private Transform pos;
     [SerializeField] private Transform spawnBulletPosition;
     private Animator anim;
     [SerializeField] private GameObject pfBulletProjectile;
@@ -42,8 +42,17 @@ public class WeaponSystem : MonoBehaviour
     public void OnShoot(InputAction.CallbackContext val)
 
         {
-            if(val.performed)
-            isShoot = true;
+            if (val.performed)
+            {
+                isShoot = true;
+                anim.SetTrigger("Shoot");
+            }
+
+            if (val.action.WasReleasedThisFrame())
+            {
+                anim.ResetTrigger("Shoot");
+            }
+            
         }
 
     public void OnAim(InputAction.CallbackContext val)
@@ -55,18 +64,7 @@ public class WeaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (weapon.gameObject.activeInHierarchy)
-        {
-            anim.SetLayerWeight(0, 0);
-            anim.SetLayerWeight(1,1);
-            anim.SetBool("haveGun",true);
-        }
-        else
-        {
-            anim.SetLayerWeight(1,0);
-            anim.SetLayerWeight(0, 1);
-            anim.SetBool("haveGun",false);
-        }
+
         
         Vector3 mouseWorldPosition = Vector3.zero;
         
@@ -76,8 +74,6 @@ public class WeaponSystem : MonoBehaviour
         Transform hitTransform = null;
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 99999f, aimColliderLayerMask)) {
             mouseWorldPosition = raycastHit.point;
-            pos.position = raycastHit.point;
-            ;
             hitTransform = raycastHit.transform;
            
         }
@@ -137,5 +133,11 @@ public class WeaponSystem : MonoBehaviour
         characterMovement.moveSpeed = realMovSpeed;
         _cameraController.distance = realDistance;
 
+    }
+
+    private void OnAnimatorMove()
+    {
+        anim.SetBool("Aiming",isAim);
+        
     }
 }

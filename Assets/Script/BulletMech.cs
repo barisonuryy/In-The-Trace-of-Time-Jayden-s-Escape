@@ -12,7 +12,7 @@ public class BulletMech : MonoBehaviour
     }
 
     private void Start() {
-        float speed = 50f;
+        float speed = 75f;
         bulletRigidbody.velocity = transform.forward * speed;
     }
 
