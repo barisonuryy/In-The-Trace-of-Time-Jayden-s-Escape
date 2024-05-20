@@ -15,8 +15,8 @@ Jayden, ortaçağ döneminde nerede olduğunu anlamaya çalışır. Çevresindek
 Jayden, portal aracılığıyla bir uzay istasyonuna ulaşır. Gelecekte, insanlar teknolojik olarak çok ileri bir seviyeye ulaşmıştır. Jayden, uzay üssünde bir laboratuvar bulur. Üsse bağlı askerler, Jayden’i tehdit olarak algılar ve ona saldırır. Jayden, askerlerden kaçmak zorundadır. Güvenli bir yere ulaşmak için askeri güvenlik sistemlerini atlatır. Nihayet, kendi zamanına geri dönebileceği son portalı bulur. Portalın içine adım atarken, neyle karşılaşacağını bilmeden içeri girer...
 
 # Emeği Geçenler
--Hasan Demirtaş->Level Designı yaptı ve animasyon yaptı.
--Selin Yiğit->Yapay zeka kısmını geliştirdi.
--Selene Demirtaş->Oyunun poster kısmını ve tanıtım videosunu yaptı.
--Barış Onur Yıldız->Karakterin mekaniklerini yaptı.
+- Hasan Demirtaş->Level Designı yaptı ve animasyon yaptı.
+- Selin Yiğit->Yapay zeka kısmını geliştirdi.
+- Selene Demirtaş->Oyunun poster kısmını ve tanıtım videosunu yaptı.
+- Barış Onur Yıldız->Karakterin mekaniklerini yaptı.
 
