@@ -33,7 +33,7 @@ MIXAMO CHARACTERS: https://www.mixamo.com/
 -	Morak
 -	Ch33_nonPBR
 
-** UNITY CHARACTERS: https://assetstore.unity.com/ **
+**UNITY CHARACTERS: https://assetstore.unity.com/**
 -	Sci Fi Space Soldier PolygonR
 -	Robot Hero : PBR HP Polyart
 
