@@ -24,10 +24,10 @@ public class DragonAgentScript : Agent
     {
         if (transform.localPosition.y < 0f)
         {
-            //ajanýn platformun sýnýrlarýndan düþüp düþmediðinin kontrolü yapýldý.
+            //ajanï¿½n platformun sï¿½nï¿½rlarï¿½ndan dï¿½ï¿½ï¿½p dï¿½ï¿½mediï¿½inin kontrolï¿½ yapï¿½ldï¿½.
             rgb.angularVelocity = Vector3.zero;
             rgb.velocity = Vector3.zero;
-            //Ajan düþtükten sonra yeniden platformun üstüne yerleþir.
+            //Ajan dï¿½ï¿½tï¿½kten sonra yeniden platformun ï¿½stï¿½ne yerleï¿½ir.
             transform.localPosition = new Vector3(0, 1f, 0);
             target.transform.localPosition = new Vector3(-50f,1f,-13f);
         }
@@ -36,12 +36,12 @@ public class DragonAgentScript : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        //Bazý önemli verilerin görüntülenmesi ve kaydedilmesi saðlanýr.
+        //Bazï¿½ ï¿½nemli verilerin gï¿½rï¿½ntï¿½lenmesi ve kaydedilmesi saï¿½lanï¿½r.
 
-        //Ajan ve target'ýn pozisyon bilgileri.Sürekli deðiþen bilgiler olduðu için tutulmalýdýr.
+        //Ajan ve target'ï¿½n pozisyon bilgileri.Sï¿½rekli deï¿½iï¿½en bilgiler olduï¿½u iï¿½in tutulmalï¿½dï¿½r.
         sensor.AddObservation(target.localPosition);
         sensor.AddObservation(transform.localPosition);
-        //Ajanýn hýz bilgileri -> x ve z eksenlerinde hareket saðlanýr.
+        //Ajanï¿½n hï¿½z bilgileri -> x ve z eksenlerinde hareket saï¿½lanï¿½r.
         sensor.AddObservation(rgb.velocity.x);
         sensor.AddObservation(rgb.velocity.z);
     }
@@ -66,7 +66,7 @@ public class DragonAgentScript : Agent
                 controlSignal.x = actions.ContinuousActions[0];
                 controlSignal.z = actions.ContinuousActions[1];
                 rgb.AddForce(controlSignal*carpan);
-                //Ajanýn hedefle arasýndaki mesafe farkýna göre ödüllendirme ve cezalandýrma
+                //Ajanï¿½n hedefle arasï¿½ndaki mesafe farkï¿½na gï¿½re ï¿½dï¿½llendirme ve cezalandï¿½rma
                 if (distance < 3f)
                 {
                     Debug.Log("Inside If");

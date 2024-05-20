@@ -28,8 +28,5 @@ Debug.Log(currentHealth);
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log(other.gameObject.name);
-    }
+    
 }

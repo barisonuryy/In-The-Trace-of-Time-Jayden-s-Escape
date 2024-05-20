@@ -24,10 +24,10 @@ public class SoldierInvisible : Agent
     {
         if (transform.localPosition.y < -1f)
         {
-            //ajanın platformun sınırlarından düşüp düşmediğinin kontrolü yapıldı.
+            //ajanÃ½n platformun sÃ½nÃ½rlarÃ½ndan dÃ¼Ã¾Ã¼p dÃ¼Ã¾mediÃ°inin kontrolÃ¼ yapÃ½ldÃ½.
             rgb.angularVelocity = Vector3.zero;
             rgb.velocity = Vector3.zero;
-            //Ajan düştükten sonra yeniden platformun üstüne yerleşir.
+            //Ajan dÃ¼Ã¾tÃ¼kten sonra yeniden platformun Ã¼stÃ¼ne yerleÃ¾ir.
             transform.localPosition = new Vector3(8.249f, 0f, 4.061f);
             target.transform.localPosition = new Vector3(-15f, 1f, -8.6f);
             Debug.Log("OnBegin");
@@ -37,12 +37,12 @@ public class SoldierInvisible : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        //Bazı önemli verilerin görüntülenmesi ve kaydedilmesi sağlanır.
+        //BazÃ½ Ã¶nemli verilerin gÃ¶rÃ¼ntÃ¼lenmesi ve kaydedilmesi saÃ°lanÃ½r.
 
-        //Ajan ve target'ın pozisyon bilgileri.Sürekli değişen bilgiler olduğu için tutulmalıdır.
+        //Ajan ve target'Ã½n pozisyon bilgileri.SÃ¼rekli deÃ°iÃ¾en bilgiler olduÃ°u iÃ§in tutulmalÃ½dÃ½r.
         sensor.AddObservation(target.localPosition);
         sensor.AddObservation(transform.localPosition);
-        //Ajanın hız bilgileri -> x ve z eksenlerinde hareket sağlanır.
+        //AjanÃ½n hÃ½z bilgileri -> x ve z eksenlerinde hareket saÃ°lanÃ½r.
         sensor.AddObservation(rgb.velocity.x);
         sensor.AddObservation(rgb.velocity.z);
     }
@@ -70,7 +70,7 @@ public class SoldierInvisible : Agent
                 controlSignal.x = actions.ContinuousActions[0];
                 controlSignal.z = actions.ContinuousActions[1];
                 rgb.AddForce(controlSignal * carpan);
-                //Ajanın hedefle arasındaki mesafe farkına göre ödüllendirme ve cezalandırma
+                //AjanÃ½n hedefle arasÃ½ndaki mesafe farkÃ½na gÃ¶re Ã¶dÃ¼llendirme ve cezalandÃ½rma
                 if (distance < 5f)
                 {
                     Debug.Log("Inside If");
