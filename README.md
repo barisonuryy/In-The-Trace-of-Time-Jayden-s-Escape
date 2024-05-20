@@ -19,4 +19,6 @@ Jayden, portal aracılığıyla bir uzay istasyonuna ulaşır. Gelecekte, insanl
 - Selin Yiğit->Yapay zeka kısmını geliştirdi.
 - Selene Demirtaş->Oyunun poster kısmını ve tanıtım videosunu yaptı.
 - Barış Onur Yıldız->Karakterin mekaniklerini yaptı.
-
+  
+# Oyun Tanıtım Videosu
+https://youtu.be/WzzSCe9rb28
