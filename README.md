@@ -37,7 +37,7 @@ MIXAMO CHARACTERS: https://www.mixamo.com/
 -	Sci Fi Space Soldier PolygonR
 -	Robot Hero : PBR HP Polyart
 
-              DRAGON MODEL:
+  DRAGON MODEL:
 -	Dragon for Boss Monster : HP
 
 ENVIRONMENTAL MODELS (Unity)
